@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <script>
+        function populate(s1,s2)
+        {
+             var s1=document.getElementById(s1);
+             var s2=document.getElementById(s2);
+             s2.innerHTML= "";
+             if(s1.value=="science")
+             {
+                 var optionArray=['biology','computer science'];
+             }
+        }
+    </script>
+</head>
+<body>
+<form method="post" action="">
+    {% csrf_token %}
+    <h2>ORDER FORM</h2>
+    <label>Name</label>
+    <input type="text"><br>
+    <label>DOB</label>
+    <input type="date"><br>
+    <label>Age</label>
+    <input type="text"><br>
+    <label>Gender</label><br>
+    <label>male</label><input type="radio"><label>female</label><input type="radio"><br>
+    <label>Phone no</label><br>
+    <input type="text"><br>
+    <label>Email   id</label>
+    <input type="email"><br>
+    <label>Address</label>
+    <input type="text"><br>
+    <div class="container">
+        <div class="f-group">
+            <label>Department</label>
+            <select name="de" id="de" onchange="populate(this.id,'co')">
+                <option value="department">choose department</option>
+                <option value="science">science</option>
+                <option value="commerce">commerce</option>
+            </select>
+        </div>
+        <div class="f-group">
+            <label>Course</label>
+            <select name="co" id="co">
+            </select>
+        </div>
+    </div>
+
+    <label>Purpose</label>
+    <select>
+        <option value="purposes">choose a purpose</option>
+        <option value="enquiry">enquiry</option>
+        <option value="Place order">place order</option>
+        <option value="return">return</option>
+    </select><br>
+    <label>Materials Provided ---</label>
+    <label>notebook</label><input type="checkbox"><label>pen</label><input type="checkbox"><label>pappers</label><input type="checkbox"><br>
+    <input type="submit"><br>
+</form>
+{% for msg in messages %}
+{{msg}}
+{% endfor %}
+</body>
+</html>
